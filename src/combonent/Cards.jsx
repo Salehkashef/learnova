@@ -10,11 +10,11 @@ function Cards() {
     <>
             <div className="row row-cols-1 row-cols-md-4 g-4 mb-4 ">
               <div className="col">
-                <div className="card shadow border-0 h-100 d-flex justify-content-center align-items-center">
+              <div className="card shadow border-0 h-100 d-flex justify-content-center align-items-center">
                   <img src={cimg} className={style.cardimg} alt="..." />
                   <div className="card-body">
                   <div className="techerimg d-flex justify-content-lg-between align-items-center">
-                     <div className='d-flex justify-content-start align-items-center  mt-2'> 
+                  <div className='d-flex justify-content-start align-items-center  mt-2'> 
                      <i class="fa-regular fa-pen-fancy  mb-3 mx-2 "></i>
                       <p className={style.botomtext}>Design</p>
                       </div>

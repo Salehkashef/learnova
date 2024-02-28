@@ -2,6 +2,9 @@ footer{
     background-color: #252641 !important;
     color: aliceblue !important;
 }
+.logo{
+    width: 80px;
+}
 .inpo{
     display: flex;
     align-items: center;

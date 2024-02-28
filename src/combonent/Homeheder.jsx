@@ -1,11 +1,12 @@
 import React from 'react'
 import img from "../assets/img/3974104.jpg"
+import { NavLink } from 'react-router-dom';
 import style from "./Homeheder.module.css";
 
 function Homeheder() {
   return (
     <>
-    <section className="home  mt-5">
+    <section className="home ms-5  mt-5">
 <div className="container">
   <div className="row">
     <div className="col-6 mt-5">
@@ -23,12 +24,12 @@ function Homeheder() {
         committed to creating a global community <br /> of learners who can
         thrive in the digital age.
       </p>
-      <button className="btn btn-primary ms-3 " type="submit">
-        Get started
+      <button className={style.btn} >
+        <NavLink className="nav-link active" to="/corses"> Get started</NavLink>
       </button>
-      <button className="btn btn-outline-dark ms-3 " type="submit">
+      {/* <button className="btn btn-outline-dark ms-3 " type="submit">
         Discover
-      </button>
+      </button> */}
     </div>
     <div className="col-6">
       <img className={style.img1}  src={img} />

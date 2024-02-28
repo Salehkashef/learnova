@@ -3,7 +3,7 @@ import wep from '../assets/img/continuous_8759173.png'
 import art from '../assets/img/art_1756784.png'
 import mark from '../assets/img/stock-market_3713756.png'
 import des from '../assets/img/curve_2939047.png'
-import "./TopCategoroes.css";
+import style  from  "./TopCategoroes.module.css";
 
 
 
@@ -29,8 +29,8 @@ function TopCategoroes() {
         style={{ width: "18rem" }}
       >
         <div className="card-body">
-          <div className="timg shadow p-3 mb-2 bg-body-tertiary mx-auto d-flex justify-content-center align-items-center">
-            <img className='timgi ' src={wep} alt="" />
+          <div className="w-25 shadow rounded-circle p-3 mb-2 bg-body-tertiary mx-auto d-flex justify-content-center align-items-center">
+            <img className={style.timgi} src={wep} alt="" />
           </div>
           <h5 className="card-title">Devolopment</h5>
           <a className="nav-link active ms-3 me-3" aria-current="page" href="#">
@@ -43,8 +43,8 @@ function TopCategoroes() {
         style={{ width: "18rem" }}
       >
         <div className="card-body">
-        <div className="timg shadow p-3 mb-2 bg-body-tertiary mx-auto d-flex justify-content-center align-items-center">
-            <img className='timgi' src={des} alt="" />
+        <div className="w-25 shadow rounded-circle p-3 mb-2 bg-body-tertiary mx-auto d-flex justify-content-center align-items-center">
+            <img className={style.timgi} src={des} alt="" />
           </div>
           <h5 className="card-title">Design</h5>
           <a className="nav-link active ms-3 me-3" aria-current="page" href="#">
@@ -57,8 +57,8 @@ function TopCategoroes() {
         style={{ width: "18rem" }}
       >
         <div className="card-body">
-        <div className="timg shadow p-3 mb-2 bg-body-tertiary mx-auto d-flex justify-content-center align-items-center">
-            <img className='timgi' src={art} alt="" />
+        <div className="w-25 shadow rounded-circle p-3 mb-2 bg-body-tertiary mx-auto d-flex justify-content-center align-items-center">
+            <img className={style.timgi} src={art} alt="" />
           </div>
           <h5 className="card-title">Art &amp; Culture</h5>
           <a className="nav-link active ms-3 me-3" aria-current="page" href="#">
@@ -71,8 +71,8 @@ function TopCategoroes() {
         style={{ width: "18rem" }}
       >
         <div className="card-body">
-        <div className="timg shadow p-3 mb-2 bg-body-tertiary mx-auto d-flex justify-content-center align-items-center">
-            <img className='timgi' src={mark} alt="" />
+        <div className="w-25 shadow rounded-circle p-3 mb-2 bg-body-tertiary mx-auto d-flex justify-content-center align-items-center">
+            <img className={style.timgi} src={mark} alt="" />
           </div>
           <h5 className="card-title">markting</h5>
           <a className="nav-link active ms-3 me-3" aria-current="page" href="#">

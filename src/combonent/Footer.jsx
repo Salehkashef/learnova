@@ -1,5 +1,7 @@
 import React from "react";
 import style from "./Footer.module.css";
+import logo from "../assets/img/V07.png";
+
 function Footer() {
   return (
     <>
@@ -9,7 +11,7 @@ function Footer() {
             <div className="row ">
               <div className="col-md-3 col-lg-4 col-xl-3  mx-auto mb-2 text-center mt-4">
                 <div className="heder d-flex align-items-center justify-content-center">
-                  <img src="" alt="" />
+                  <img src={logo} className={style.logo} />
                   <div class="vr ms-3 mx-3"></div>
                   <h5>
                     Virtual Class <br /> for Zoom

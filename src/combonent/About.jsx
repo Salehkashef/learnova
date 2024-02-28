@@ -8,11 +8,11 @@ function About() {
         <section className={style.About}>
   <h1 className="ahtext text-center ms-4  mt-4">About us</h1>
   <div className="container  mt-4">
-    <div className="row ">
-      <div className="col-6 ms-2">
+    <div className={style.row}>
+      <div className={style.backimg}>
         <img  src={img}  className={style.Aimg}/> 
       </div>
-      <div className="col-6 atext">
+      <div className={style.atext}>
         <h1>
           Welcome to our <br />
           e-learning center
