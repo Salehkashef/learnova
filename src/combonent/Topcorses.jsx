@@ -1,13 +1,13 @@
-import React from 'react'
+import React from "react";
 import style from "./Corsesheder.module.css";
 import mainstyle from "./main.module.css";
-import Boton from './Boton';
-import Cards from './Cards';
+import Boton from "./Boton";
+import Cards from "./Cards";
 
 function Topcorses() {
   return (
     <>
-     <div className={mainstyle.container}>
+      <div className={mainstyle.container}>
         <div className="container">
           <div className="row">
             <div className="text mt-4 d-flex justify-content-lg-between align-items-center">
@@ -17,15 +17,13 @@ function Topcorses() {
               </span>
             </div>
 
-          
-            <Cards />
-
-             <Boton />
+            {/* <Cards /> */}
+            {/* <Boton /> */}
           </div>
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default Topcorses
+export default Topcorses;

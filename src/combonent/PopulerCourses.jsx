@@ -7,7 +7,7 @@ function PopulerCourses() {
     <>
       <section className="container text-center">
         <h1 className="mb-4">most populer courses</h1>
-        <Cards />
+        {/* <Cards /> */}
       </section>
     </>
   );

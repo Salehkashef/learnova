@@ -1,143 +1,57 @@
-import React from "react";
-import style from './Fav.module.css'
-import artimg from "../assets/img/art.png";
-import busnes from "../assets/img/bag.png";
-import photografy from "../assets/img/book.png";
+import React, { useEffect } from "react";
+import style from "./Fav.module.css";
 import data from "../assets/img/data.png";
-import wep from "../assets/img/wep.png";
-import vedus from "../assets/img/vedet.png";
-import marketing from "../assets/img/marct.png";
-
+import { useDispatch, useSelector } from "react-redux";
+import { getCategory } from "../Redux/slices/categorySlice";
+import { Link, useNavigate } from "react-router-dom";
 
 function Fav() {
+  const dispatcher = useDispatch();
+  const categories = useSelector(
+    (state) => state.CategoryReducer.categories.data
+  );
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatcher(getCategory());
+  }, []);
+  const handleCardClick = (item) => {
+    navigate(`/category`, { state: item });
+  };
+
   return (
-    <>
-      <div className="container">
-        <div className="row">
-          <div className="text mt-4 d-flex justify-content-lg-between align-items-center">
-            <h3>Choice favourite course from top category</h3>
-          </div>
-          <section>
-            <div className="cards ">
-              <div className="row mt-4 ">
-                <div
-                  className="card border-0 shadow p-3 mb-5 bg-body-tertiary rounded ms-3 text-center"
-                  style={{ width: "18rem" }}
-                >
-                  <div className="card-body">
-                    <div className={style.imgcard1}>
-                      <img className={style.artimg} src={artimg} alt="" />
-                    </div>
-                    <h5 className="card-title mt-3">Design</h5>
-                   <p className="w-80 mt-3 mb-1">
-                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodadipiscing elit, sed do eiusmod
-                   </p>
+    <div className="container">
+      <div className="row">
+        <div className="col-12 text-center mt-4">
+          <h1>Ignite Your Learning Journey. Unleash Your Potential.</h1>
+        </div>
+      </div>
+      <div className="row mt-4">
+        {categories &&
+          categories.map((item, index) => (
+            <div
+              key={index}
+              className="col-lg-3 col-md-4 col-sm-6 mb-4"
+              onClick={() => handleCardClick(item)}
+            >
+              <div
+                className={`${style.cards} card border-0 shadow bg-body-tertiary rounded text-center`}
+              >
+                <div className="card-body">
+                  <div className={style.imgcard}>
+                    <img
+                      src={`http://localhost:4000/imgs/${item.icon}`}
+                      alt="Category Image"
+                    />
                   </div>
-                </div>
-                <div
-                  className="card border-0 shadow p-3 mb-5 bg-body-tertiary rounded ms-3 text-center"
-                  style={{ width: "18rem" }}
-                >
-                  <div className="card-body">
-                    <div className={style.imgcard2}>
-                      <img className={style.artimg} src={wep} alt="" />
-                    </div>
-                    <h5 className="card-title mt-3">Development</h5>
-                   <p className="w-80 mt-3 mb-1">
-                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodadipiscing elit, sed do eiusmod
-                   </p>
-                  </div>
-                </div>
-                <div
-                  className="card border-0 shadow p-3 mb-5 bg-body-tertiary rounded ms-3 text-center"
-                  style={{ width: "18rem" }}
-                >
-                  <div className="card-body">
-                    <div className={style.imgcard3}>
-                      <img className={style.artimg} src={data} alt="" />
-                    </div>
-                    <h5 className="card-title mt-3">Development</h5>
-                   <p className="w-80 mt-3 mb-1">
-                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodadipiscing elit, sed do eiusmod
-                   </p>
-                  </div>
-                </div>
-                <div
-                  className="card border-0 shadow p-3 mb-5 bg-body-tertiary rounded ms-3 text-center"
-                  style={{ width: "18rem" }}
-                >
-                  <div className="card-body">
-                    <div className={style.imgcard4}>
-                      <img className={style.artimg} src={busnes} alt="" />
-                    </div>
-                    <h5 className="card-title mt-3">Business</h5>
-                   <p className="w-80 mt-3 mb-1">
-                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodadipiscing elit, sed do eiusmod
-                   </p>
-                  </div>
-                </div>
-                <div
-                  className="card border-0 shadow p-3 mb-5 bg-body-tertiary rounded ms-3 text-center"
-                  style={{ width: "18rem" }}
-                >
-                  <div className="card-body">
-                    <div className={style.imgcard5}>
-                      <img className={style.artimg} src={marketing} alt="" />
-                    </div>
-                    <h5 className="card-title mt-3">Marketing</h5>
-                   <p className="w-80 mt-3 mb-1">
-                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodadipiscing elit, sed do eiusmod
-                   </p>
-                  </div>
-                </div>
-                <div
-                  className="card border-0 shadow p-3 mb-5 bg-body-tertiary rounded ms-3 text-center"
-                  style={{ width: "18rem" }}
-                >
-                  <div className="card-body">
-                    <div className={style.imgcard6}>
-                      <img className={style.artimg} src={photografy} alt="" />
-                    </div>
-                    <h5 className="card-title mt-3">Photography</h5>
-                   <p className="w-80 mt-3 mb-1">
-                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodadipiscing elit, sed do eiusmod
-                   </p>
-                  </div>
-                </div>
-                <div
-                  className="card border-0 shadow p-3 mb-5 bg-body-tertiary rounded ms-3 text-center"
-                  style={{ width: "18rem" }}
-                >
-                  <div className="card-body">
-                    <div className={style.imgcard7}>
-                      <img className={style.artimg} src={vedus} alt="" />
-                    </div>
-                    <h5 className="card-title mt-3">Acting</h5>
-                   <p className="w-80 mt-3 mb-1">
-                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodadipiscing elit, sed do eiusmod
-                   </p>
-                  </div>
-                </div>
-                <div
-                  className="card border-0 shadow p-3 mb-5 bg-body-tertiary rounded ms-3 text-center"
-                  style={{ width: "18rem" }}
-                >
-                  <div className="card-body">
-                    <div className={style.imgcard4}>
-                      <img className={style.artimg} src={busnes} alt="" />
-                    </div>
-                    <h5 className="card-title mt-3">Business</h5>
-                   <p className="w-80 mt-3 mb-1">
-                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodadipiscing elit, sed do eiusmod
-                   </p>
-                  </div>
+                  <h5 className="card-title mt-3">{item.name}</h5>
                 </div>
               </div>
             </div>
-          </section>
-        </div>
+          ))}
       </div>
-    </>
+    </div>
   );
 }
 

@@ -1,26 +1,58 @@
-import React from 'react'
+import React from "react";
 import style from "./Nav.module.css";
 import logo from "../assets/img/V01.png";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 function Nav() {
   return (
     <>
-  <nav className={style.nav}  data-bs-theme="dark">
-  <div className="container-fluid navbar navbar-expand-lg">
-    <NavLink className="navbar-brand ms-5" to="/">
-     <img src={logo} className={style.logo}/>
-    </NavLink>
-    <div className="collapse navbar-collapse ms-3 " id="navbarSupportedContent">
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
-      <li  ><NavLink className="nav-link active ms-3 me-3" to="/">Home</NavLink></li>
-      <li  ><NavLink className="nav-link active ms-3 me-3" to="/corses">Courses</NavLink></li>
-      <li  ><NavLink className="nav-link active ms-3 me-3" to="/corsdetels">Corsdetels</NavLink></li>
-      <li  ><NavLink className="nav-link active ms-3 me-3" to="/careers">Careers</NavLink></li>
-      <li  ><NavLink className="nav-link active ms-3 me-3" to="/blog">Blog</NavLink></li>
-      <li  ><NavLink className="nav-link active ms-3 me-3" to="/about">About Us</NavLink></li>
-      </ul>
-      {/* <form className="d-flex" role="log">
+      <nav className={style.nav} data-bs-theme="dark">
+        <div className="container-fluid navbar navbar-expand-lg">
+          <NavLink className="navbar-brand ms-5" to="/">
+            <img src={logo} className={style.logo} />
+          </NavLink>
+          <div
+            className="collapse navbar-collapse ms-3 "
+            id="navbarSupportedContent"
+          >
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
+              <li>
+                <NavLink className="nav-link active ms-3 me-3" to="/">
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className="nav-link active ms-3 me-3" to="/corses">
+                  Courses
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className="nav-link active ms-3 me-3" to="/Allcourses">
+                  AllCourses
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className="nav-link active ms-3 me-3" to="/corsdetels">
+                  Corsdetels
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className="nav-link active ms-3 me-3" to="/careers">
+                  Careers
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className="nav-link active ms-3 me-3" to="/blog">
+                  Blog
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className="nav-link active ms-3 me-3" to="/about">
+                  About Us
+                </NavLink>
+              </li>
+            </ul>
+            {/* <form className="d-flex" role="log">
       <li  className="btn btn-outline-light rounded-pill ms-3 me-3" ><NavLink className="nav-link active ms-3 me-3 mt-1" to="/log">Login</NavLink></li>
       <li  className="btn btn-outline-light rounded-pill ms-3 me-3" ><NavLink className="nav-link active ms-3 me-3 mt-1" to="/register">Signup</NavLink></li>
 
@@ -48,7 +80,7 @@ function Nav() {
           </ul>
           </li>
       </form> */}
-{/* 
+            {/* 
        
         <li className="nav-item">
           <a className="nav-link active ms-3 me-3" aria-current="page" href="#">
@@ -104,11 +136,11 @@ function Nav() {
           </ul>
           </li>
       </form> */}
-    </div>
-  </div>
-</nav>
+          </div>
+        </div>
+      </nav>
     </>
-  )
+  );
 }
 
-export default Nav
+export default Nav;

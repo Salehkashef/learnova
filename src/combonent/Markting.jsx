@@ -1,11 +1,11 @@
-import React from 'react'
-import Cards from './Cards'
+import React from "react";
+import Cards from "./Cards";
 import mainstyle from "./main.module.css";
 
 function Markting() {
   return (
     <>
-     <div className={mainstyle.container}>
+      <div className={mainstyle.container}>
         <div className="container">
           <div className="row">
             <div className="text mt-4 d-flex justify-content-lg-between align-items-center">
@@ -15,13 +15,12 @@ function Markting() {
               </span>
             </div>
 
-          
-            <Cards />
+            {/* <Cards /> */}
           </div>
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default Markting
+export default Markting;
