@@ -4,26 +4,19 @@ import { NavLink } from "react-router-dom";
 import { FaLinkedin, FaFacebook, FaGlobe, FaComment } from "react-icons/fa";
 import img from "../assets/img/business-video-chat-laptop.jpg";
 
-function INSTRUCTOR() {
-  function handleChat() {
-    // Add your chat handling logic here
-  }
+import { useDispatch, useSelector } from "react-redux";
+import getInstructorData from "../Redux/slices/InstructorSlice";
 
-  // Fake data for instructor profile
-  const instructorData = {
-    name: "Maximilian Schwarzmüller",
-    certification: "AWS Certified, Professional Web Developer and Instructor",
-    totalStudents: "2,871,957",
-    reviews: "1,061,922",
-    aboutMe:
-      "I'm passionate about teaching and have been helping students learn web development and AWS for years. My courses are designed to be comprehensive and practical, ensuring students gain real-world skills.",
-    socialMedia: {
-      linkedin:
-        "https://www.linkedin.com/in/maximilian-schwarzm%C3%BCller-b4813a117/",
-      facebook: "https://www.facebook.com/academindchannel",
-      website: "https://academind.com/",
-    },
-  };
+function INSTRUCTOR() {
+  const dispatcher = useDispatch();
+  const Instructordata = useSelector(
+    (state) => state.InstructorReducer.instructor
+  );
+  console.log(Instructordata);
+
+  seEffect(() => {
+    dispatcher(getInstructorData());
+  }, []);
 
   return (
     <>
@@ -32,36 +25,36 @@ function INSTRUCTOR() {
           <div className="col-lg-7">
             <div>
               <p className="text-muted">INSTRUCTOR</p>
-              <h2>{instructorData.name}</h2>
-              <p className="text-secondary">{instructorData.certification}</p>
+              <h2>{}</h2>
+              <p className="text-secondary">{}</p>
               <div className="mb-4 row">
                 <div className="col-6">
                   <p>Total Students</p>
-                  <h3>{instructorData.totalStudents}</h3>
+                  <h3>{}</h3>
                 </div>
                 <div className="col-6">
                   <p>Reviews</p>
-                  <h3>{instructorData.reviews}</h3>
+                  <h3>{}</h3>
                 </div>
               </div>
 
               <h3>About Me</h3>
 
-              <ClampLines
-                text={instructorData.aboutMe}
+              {/* <ClampLines
+                text={}
                 lines={2}
                 ellipsis="..."
                 moreText="Expand"
                 lessText="Collapse"
                 className="custom-class"
                 innerElement="p"
-              />
+              /> */}
             </div>
           </div>
           <div className="col-lg-3">
-            <div className="mb-4">
+            <div className="mb-4  ">
               <div
-                className="rounded-circle overflow-hidden border border-secondary"
+                className="rounded-circle overflow-hidden border border-secondary m-auto "
                 style={{ width: "200px", height: "200px" }}
               >
                 <img
@@ -72,27 +65,21 @@ function INSTRUCTOR() {
               </div>
             </div>
 
-            <div>
-              <NavLink
-                to={instructorData.socialMedia.linkedin}
-                className="btn btn-outline-primary mb-2 d-block"
-              >
+            <div className="m-3">
+              <NavLink className="btn btn-outline-primary mb-2 d-block">
                 <FaLinkedin /> LinkedIn
               </NavLink>
-              <NavLink
-                to={instructorData.socialMedia.facebook}
-                className="btn btn-outline-primary mb-2 d-block"
-              >
+              <NavLink className="btn btn-outline-primary mb-2 d-block">
                 <FaFacebook /> Facebook
               </NavLink>
-              <NavLink
-                to={instructorData.socialMedia.website}
-                className="btn btn-outline-primary mb-2 d-block"
-              >
+              <NavLink className="btn btn-outline-primary mb-2 d-block">
                 <FaGlobe /> Website
               </NavLink>
             </div>
           </div>
+        </section>
+        <section>
+          <h1>My courses</h1>
         </section>
       </div>
     </>
