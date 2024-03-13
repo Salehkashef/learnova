@@ -1,22 +1,33 @@
-import { Button } from "bootstrap";
-import ClampLines from "react-clamp-lines";
-import { NavLink } from "react-router-dom";
-import { FaLinkedin, FaFacebook, FaGlobe, FaComment } from "react-icons/fa";
-import img from "../assets/img/business-video-chat-laptop.jpg";
-
+import { useEffect } from "react";
+import { FaLinkedin, FaFacebook, FaGlobe } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import getInstructorData from "../Redux/slices/InstructorSlice";
+import { getInstructorData } from "../Redux/slices/InstructorSlice";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import { useLocation } from "react-router-dom";
 
 function INSTRUCTOR() {
-  const dispatcher = useDispatch();
-  const Instructordata = useSelector(
+  const location = useLocation();
+  const userID = location.state;
+
+  const dispatch = useDispatch();
+  const instructorData = useSelector(
     (state) => state.InstructorReducer.instructor
   );
-  console.log(Instructordata);
+  const userData = useSelector((state) => state.InstructorReducer.userData);
+  const isLoading = useSelector((state) => state.InstructorReducer.loading);
 
-  seEffect(() => {
-    dispatcher(getInstructorData());
-  }, []);
+  useEffect(() => {
+    dispatch(getInstructorData(userID));
+  }, [dispatch, userID]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
@@ -25,30 +36,28 @@ function INSTRUCTOR() {
           <div className="col-lg-7">
             <div>
               <p className="text-muted">INSTRUCTOR</p>
-              <h2>{}</h2>
-              <p className="text-secondary">{}</p>
+              <h2>{userData ? userData.fullName : ""}</h2>
+              <p className="text-secondary">
+                {instructorData ? instructorData.job : ""}
+              </p>
               <div className="mb-4 row">
                 <div className="col-6">
                   <p>Total Students</p>
-                  <h3>{}</h3>
+                  <h3></h3>
                 </div>
                 <div className="col-6">
                   <p>Reviews</p>
-                  <h3>{}</h3>
+                  <h3></h3>
                 </div>
               </div>
-
               <h3>About Me</h3>
-
-              {/* <ClampLines
-                text={}
-                lines={2}
-                ellipsis="..."
-                moreText="Expand"
-                lessText="Collapse"
-                className="custom-class"
-                innerElement="p"
-              /> */}
+              <p className="">
+                {instructorData
+                  ? instructorData.aboutMe
+                    ? instructorData.aboutMe
+                    : "No information available."
+                  : "No information available."}
+              </p>
             </div>
           </div>
           <div className="col-lg-3">
@@ -58,7 +67,11 @@ function INSTRUCTOR() {
                 style={{ width: "200px", height: "200px" }}
               >
                 <img
-                  src={img}
+                  src={
+                    userData
+                      ? `http://localhost:4000/imgs/${userData.imgURL}`
+                      : ""
+                  }
                   alt="Instructor"
                   className="img-fluid w-100 h-100"
                 />
@@ -66,20 +79,57 @@ function INSTRUCTOR() {
             </div>
 
             <div className="m-3">
-              <NavLink className="btn btn-outline-primary mb-2 d-block">
-                <FaLinkedin /> LinkedIn
-              </NavLink>
-              <NavLink className="btn btn-outline-primary mb-2 d-block">
+              <a
+                href={instructorData ? instructorData.links?.facebook : "#"}
+                className={`btn btn-outline-primary mb-2 d-block ${
+                  instructorData && instructorData.links?.facebook
+                    ? ""
+                    : "disabled"
+                }`}
+                target="_blank"
+              >
                 <FaFacebook /> Facebook
-              </NavLink>
-              <NavLink className="btn btn-outline-primary mb-2 d-block">
+              </a>
+              <a
+                href={instructorData ? instructorData.links?.linkedIn : "#"}
+                className={`btn btn-outline-primary mb-2 d-block ${
+                  instructorData && instructorData.links?.linkedIn
+                    ? ""
+                    : "disabled"
+                }`}
+                target="_blank"
+              >
+                <FaLinkedin /> linkedIn
+              </a>
+              <a
+                href={instructorData ? instructorData.links?.Website : "#"}
+                className={`btn btn-outline-primary mb-2 d-block ${
+                  instructorData && instructorData.links?.Website
+                    ? ""
+                    : "disabled"
+                }`}
+                target="_blank"
+              >
                 <FaGlobe /> Website
-              </NavLink>
+              </a>
             </div>
           </div>
         </section>
         <section>
           <h1>My courses</h1>
+
+          <Swiper
+            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            spaceBetween={50}
+            slidesPerView={3}
+            navigation
+            pagination={{ clickable: true }}
+            scrollbar={{ draggable: true }}
+            onSwiper={(swiper) => console.log(swiper)}
+            onSlideChange={() => console.log("slide change")}
+          >
+            <SwiperSlide>Slide 1</SwiperSlide>
+          </Swiper>
         </section>
       </div>
     </>

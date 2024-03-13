@@ -1,9 +1,15 @@
 import style from "./Corsesheder.module.css";
 import timg from "../assets/img/Group 237.png";
 import mainstyle from "./main.module.css";
+import { useNavigate } from "react-router-dom";
 
-function Cards({ data }) {
-  // console.log(data);
+function Cards({ data, user, category }) {
+  const navigate = useNavigate();
+
+  const goInstructor = () => {
+    navigate("/instructor", { state: user._id });
+  };
+  console.log(user);
   return (
     <div className="col">
       <div className="card shadow border-0 h-100 d-flex justify-content-center align-items-center">
@@ -14,8 +20,14 @@ function Cards({ data }) {
         <div className="card-body">
           <div className="techerimg d-flex justify-content-lg-between align-items-center">
             <div className="d-flex justify-content-start align-items-center mt-2">
-              <i className="fa-regular fa-pen-fancy mb-3 mx-2"></i>
-              <p className={style.botomtext}>Design</p>
+              <img
+                src={`http://localhost:4000/imgs/${category.icon}`}
+                className={style.cardimg3}
+                alt="Lina"
+                style={{ cursor: "pointer" }}
+                onClick={goInstructor}
+              />{" "}
+              <p className={style.botomtext}>{category.name}</p>
             </div>
             <div className="d-flex justify-content-end align-items-center mt-2">
               <i className="fa-regular fa-clock mb-3 mx-2"></i>
@@ -25,9 +37,21 @@ function Cards({ data }) {
           <h5 className="card-title">{data.title}</h5>
           <p className={style.botomtext}>{data.description}</p>
           <div className="techerimg d-flex justify-content-lg-between align-items-center">
-            <div className="d-flex justify-content-start align-items-center">
-              <img src={timg} className={style.cardimg2} alt="Lina" />
-              <p className="mt-3">Lina</p>
+            <div className="d-flex justify-content-start align-items-center ">
+              <img
+                src={`http://localhost:4000/imgs/${user.imgURL}`}
+                className={style.cardimg2}
+                alt="Lina"
+                style={{ cursor: "pointer" }}
+                onClick={goInstructor}
+              />
+              <p
+                className="mt-3 "
+                onClick={goInstructor}
+                style={{ cursor: "pointer" }}
+              >
+                {user.fullName}
+              </p>
             </div>
             <div className="d-flex justify-content-end align-items-center mt-3">
               <p className={mainstyle.linkes}>$100</p>

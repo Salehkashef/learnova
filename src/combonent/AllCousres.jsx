@@ -8,12 +8,18 @@ function AllCourses() {
   const dispatch = useDispatch();
   const courses = useSelector((state) => state.CourseReducer.courses.Course);
   const total = useSelector((state) => state.CourseReducer.courses.Total);
+  const users = useSelector((state) => state.CourseReducer.courses.User);
+  const categories = useSelector(
+    (state) => state.CourseReducer.courses.Category
+  );
+  console.log(categories);
+
   const [page, setPage] = useState(1);
-  const limit = 4;
+  const limit = 3;
 
   useEffect(() => {
     dispatch(getCourses({ page, limit }));
-  }, [page]);
+  }, [dispatch, page, limit]);
 
   const handleNextPage = () => {
     setPage(page + 1);
@@ -25,6 +31,13 @@ function AllCourses() {
     }
   };
 
+  const getCardMargin = () => {
+    const numCards = courses.length;
+    if (numCards === 1) return "auto";
+    if (numCards < 4) return "1rem";
+    return "0.5rem";
+  };
+
   return (
     <div className="container">
       <div className="row">
@@ -34,7 +47,22 @@ function AllCourses() {
             <a href="#">View history</a>
           </span>
         </div>
-        {courses && courses.map((item) => <Cards key={item.id} data={item} />)}
+        <div className="d-flex ">
+          {courses &&
+            courses.map((item, index) => (
+              <div
+                key={item.id}
+                className="col-md-4 mb-4 m-auto "
+                style={{ margin: getCardMargin() }}
+              >
+                <Cards
+                  data={item}
+                  user={users[index]}
+                  category={categories[index]}
+                />
+              </div>
+            ))}
+        </div>
         <ul className="pagination">
           <li className="page-item">
             <button

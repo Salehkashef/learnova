@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import style from "./Fav.module.css";
-import data from "../assets/img/data.png";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategory } from "../Redux/slices/categorySlice";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Fav() {
   const dispatcher = useDispatch();

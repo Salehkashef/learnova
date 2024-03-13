@@ -1,8 +1,9 @@
 // import React from "react";
 import { useForm } from "react-hook-form";
 import "./Login.css";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
+import axiosInstance from "../Axios/interceptor";
 
 function LoginForm() {
   const {
@@ -11,19 +12,18 @@ function LoginForm() {
     formState: { errors },
     getValues,
   } = useForm();
-  
 
   const onSubmit = (data) => {
     console.log(data);
-    axios.post('http://localhost:4000/register', data)
-    .then(response => {
-      console.log('Form data sent successfully:', response.data);
-      
-    })
-    .catch(error => {
-      console.error('Error sending form data:', error);
-      
-    });
+    axiosInstance
+      .post("http://localhost:4000/user/login", data)
+      .then((response) => {
+        console.log(response);
+        localStorage.setItem("userID", response.data.data.user._id);
+      })
+      .catch((error) => {
+        console.error("Error sending form data:", error);
+      });
   };
   console.log(getValues());
 
@@ -32,17 +32,18 @@ function LoginForm() {
       <div className=" row row-col-2 p-20px g-30px">
         {/* left */}
         <div className="loginImg container col-6">
-          <img src="src\assets\—Pngtree—knowledge tree pencil books stationery_4346186.png" alt="" />
+          <img
+            src="src\assets\—Pngtree—knowledge tree pencil books stationery_4346186.png"
+            alt=""
+          />
         </div>
 
-        {/* right */}
         <div className=" right col-6 container ">
           <div className="loginInfo">
             <p>
-              Welcome To{" "}
+              Welcome To
               <span style={{ color: "#49BBBD", fontSize: "20px" }}>
-                {" "}
-                Learnova{" "}
+                Learnova
               </span>
             </p>
             <div className="switch">
@@ -56,37 +57,38 @@ function LoginForm() {
               </ul>
             </div>
             <p className="tx">
-              With{" "}
+              With
               <span style={{ color: "#49BBBD", fontSiz: "20px" }}>
-                {" "}
-                Learnova ...{" "}
+                Learnova ...
               </span>
               Explore boundless learning opportunities tailored just for you.
             </p>
 
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="inputBox">
-                <label htmlFor="username">Username</label>
+                <label htmlFor="email">Email</label>
+
                 <input
-                  type="text"
-                  {...register("username", {
-                    required: "Username is required",
-                    minLength: {
-                      value: 3,
-                      message: "Username must be at least 3 characters",
-                    },
+                  className="input"
+                  type="email"
+                  id="email"
+                  {...register("Email", {
+                    required: true,
+                    pattern: /^\S+@\S+$/i,
                   })}
                 />
-                {errors.username && (
-                  <p className="error">{errors.username.message}</p>
+                {errors.email && errors.email.type === "required" && (
+                  <span className="error">This field is required</span>
+                )}
+                {errors.email && errors.email.type === "pattern" && (
+                  <span className="error">Invalid email format</span>
                 )}
               </div>
-
               <div className="inputBox">
                 <label htmlFor="password">Password</label>
                 <input
                   type="password"
-                  {...register("password", {
+                  {...register("Password", {
                     required: "Password is required",
                     minLength: {
                       value: 8,
@@ -95,21 +97,18 @@ function LoginForm() {
                   })}
                 />
                 {errors.password && (
-                  <p className="error">{errors.password.message}</p>
+                  <p className="error">{errors.Password.message}</p>
                 )}
               </div>
-
-            <div className="forgot">
-              <a rel="#" href="#">
-                Forgot Password ?
-              </a>
-            </div>
-
+              <div className="forgot">
+                <a rel="#" href="#">
+                  Forgot Password ?
+                </a>
+              </div>
               <button type="submit" className="login">
                 Login
               </button>
             </form>
-
           </div>
         </div>
       </div>
