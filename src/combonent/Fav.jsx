@@ -14,7 +14,7 @@ function Fav() {
 
   useEffect(() => {
     dispatcher(getCategory());
-  }, []);
+  }, [dispatcher]);
   const handleCardClick = (item) => {
     navigate(`/category`, { state: item });
   };

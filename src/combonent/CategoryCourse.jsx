@@ -10,15 +10,23 @@ function CategoryCourse() {
   const location = useLocation();
   const dispatch = useDispatch();
   const categoryData = location.state;
+  console.log(categoryData);
   const courses = useSelector(
     (state) => state.CategoryCourseReducer.courses.Course
   );
   const total = useSelector(
     (state) => state.CategoryCourseReducer.courses.Total
   );
+  const users = useSelector(
+    (state) => state.CategoryCourseReducer.courses.User
+  );
+  console.log(users);
+  const categories = useSelector(
+    (state) => state.CategoryCourseReducer.courses.Category
+  );
   console.log(total);
   const [page, setPage] = useState(1);
-  const limit = 4;
+  const limit = 3;
   const id = categoryData._id;
 
   useEffect(() => {
@@ -64,7 +72,15 @@ function CategoryCourse() {
                 <h3>Get choice {`${categoryData.name}`} course</h3>
               </div>
               {courses &&
-                courses.map((item) => <Cards key={item._id} data={item} />)}
+                courses.map((item, index) => (
+                  <div key={item.id} className="col-md-4 mb-4 m-auto ">
+                    <Cards
+                      data={item}
+                      user={users[index]}
+                      category={categories[index]}
+                    />
+                  </div>
+                ))}
               <ul className="pagination">
                 <li className="page-item">
                   <button

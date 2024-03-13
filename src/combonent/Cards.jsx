@@ -9,25 +9,28 @@ function Cards({ data, user, category }) {
   const goInstructor = () => {
     navigate("/instructor", { state: user._id });
   };
+
   console.log(user);
   return (
     <div className="col">
-      <div className="card shadow border-0 h-100 d-flex justify-content-center align-items-center">
+      <div
+        className="card shadow border-0 h-100 d-flex justify-content-center align-items-center"
+        style={{ cursor: "pointer" }}
+      >
         <img
           src={`http://localhost:4000/imgs/${data.imgURL}`}
           className={style.cardimg}
         />
         <div className="card-body">
-          <div className="techerimg d-flex justify-content-lg-between align-items-center">
-            <div className="d-flex justify-content-start align-items-center mt-2">
+          <div className="techerimg d-flex justify-content-between align-items-center">
+            <div className="d-flex justify-content-start align-items-center ">
               <img
                 src={`http://localhost:4000/imgs/${category.icon}`}
-                className={style.cardimg3}
+                className={style.cardimg2}
                 alt="Lina"
                 style={{ cursor: "pointer" }}
-                onClick={goInstructor}
               />{" "}
-              <p className={style.botomtext}>{category.name}</p>
+              <p className="mt-3 ">{category.name}</p>
             </div>
             <div className="d-flex justify-content-end align-items-center mt-2">
               <i className="fa-regular fa-clock mb-3 mx-2"></i>

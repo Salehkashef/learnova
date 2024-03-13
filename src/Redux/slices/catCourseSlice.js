@@ -37,11 +37,11 @@ const CategoryCourseSlice = createSlice({
         state.courses = action.payload.data;
         console.log(state.courses);
 
-        console.log(action.payload.size);
+        // console.log(action.payload.size);
         state.totalPages = Math.ceil(
           action.payload.total / action.payload.limit
         );
-        console.log(state.totalPages);
+        // console.log(state.totalPages);
       })
 
       .addCase(getCategoryCourses.rejected, (state, action) => {
